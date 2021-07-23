@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using API.Interfaces;
 using API.Models;
 using API.Models.Dtos;
 using Microsoft.AspNetCore.Identity;
@@ -12,12 +13,14 @@ namespace API.Controllers
   {
     private readonly UserManager<AppUser> _userManager;
     private readonly SignInManager<AppUser> _signInManager;
+    private readonly ITokenService _tokenService;
 
     public AuthController(UserManager<AppUser> userManager,
-        SignInManager<AppUser> signInManager)
+        SignInManager<AppUser> signInManager, ITokenService tokenService)
     {
       _userManager = userManager;
       _signInManager = signInManager;
+      _tokenService = tokenService;
     }
 
     [HttpPost("signup")]
@@ -27,7 +30,7 @@ namespace API.Controllers
         return BadRequest("Username is taken");
 
       var user = new AppUser {
-          UserName = userAuthDto.Password
+          UserName = userAuthDto.UserName
       };
 
       var result = await _userManager.CreateAsync(user, userAuthDto.Password);
@@ -36,13 +39,8 @@ namespace API.Controllers
 
       return new LoginDto{
           UserName = userAuthDto.UserName,
-          Token = "Not Implemented Yet"
+          Token = _tokenService.GenerateToken(userAuthDto)
       };
-    }
-
-    private async Task<bool> UserExists(string userName) {
-        return await _userManager.Users
-            .AnyAsync(u => u.UserName.ToLower() == userName.ToLower());
     }
 
     [HttpPost("login")]
@@ -60,8 +58,12 @@ namespace API.Controllers
 
         return new LoginDto{
             UserName = user.UserName,
-            Token = "Not Implemented yet"
+            Token = _tokenService.GenerateToken(userAuthDto)
         };
+    }
+    private async Task<bool> UserExists(string userName) {
+        return await _userManager.Users
+            .AnyAsync(u => u.UserName.ToLower() == userName.ToLower());
     }
   }
 }
