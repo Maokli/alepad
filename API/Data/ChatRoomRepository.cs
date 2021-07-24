@@ -18,14 +18,12 @@ namespace API.Data
     public async Task<IEnumerable<ChatRoom>> GetAllChatRooms()
     {
       return await _context.ChatRooms
-        .Include(x => x.Messages)
         .ToListAsync();
     }
 
     public async Task<ChatRoom> GetChatRoomById(int id)
     {
       return await _context.ChatRooms
-        .Include(x => x.Messages)
         .SingleOrDefaultAsync(x => x.Id == id);
     }
   }

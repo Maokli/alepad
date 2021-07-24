@@ -32,14 +32,7 @@ namespace API.Data
         .HasForeignKey(ur => ur.RoleId)
         .IsRequired();
 
-      builder.Entity<Message>()
-        .HasOne(m => m.Sender);
-
-      builder.Entity<Message>()
-        .HasOne(m => m.ChatRoom);
       
-      builder.Entity<ChatRoom>()
-        .HasMany(u => u.Messages);
     }
   }
 }
