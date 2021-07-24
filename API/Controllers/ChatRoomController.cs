@@ -25,7 +25,7 @@ namespace API.Controllers
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<ChatRoom>> GetAllChatRooms(int id) 
+    public async Task<ActionResult<ChatRoom>> GetChatRoomById(int id) 
     {
         var chatRoom = await _chatRoomRepository.GetChatRoomById(id);
 
