@@ -18,6 +18,10 @@ namespace API.Controllers
       _messageRepository = messageRepository;
       _userRepository = userRepository;
     }
+    public MessageController(IMessageRepository messageRepository)
+    {
+      _messageRepository = messageRepository;
+    }
 
     [HttpGet("{chatRoomId}")]
     public async Task<ActionResult<MessageToReturnDto>> GetChatRoomMessages(int chatRoomId)

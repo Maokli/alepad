@@ -14,7 +14,7 @@ namespace ControllerTests
     public class ChatRoomsTest
     {
         [Fact]
-        public async Task GetAllChatRooms_ReturnsOkResult_WithFourChatRooms()
+        public async Task GetAllChatRooms_ReturnsOkResult()
         {
             //Arrange
             var mockRepo = new Mock<IChatRoomRepository>();
@@ -26,7 +26,7 @@ namespace ControllerTests
             };
 
             mockRepo.Setup(repo => repo.GetAllChatRooms())
-                .Returns(Task.FromResult(fakeChatRooms.AsEnumerable()));
+                .ReturnsAsync(fakeChatRooms.AsEnumerable());
 
             var controller = new ChatRoomController(mockRepo.Object);
 
