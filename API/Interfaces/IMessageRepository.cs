@@ -9,7 +9,7 @@ namespace API.Interfaces
     public interface IMessageRepository
     {
         void AddMessage(CreateMessageDto createMessageDto);
-        Task<IEnumerable<Message>> GetChatRoomMessages(int chatroomId);
+        Task<IEnumerable<Message>> GetChatRoomMessagesWithUser(int chatroomId);
         Task<bool> SaveAllAsync();
     }
 }

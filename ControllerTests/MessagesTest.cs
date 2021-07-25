@@ -54,20 +54,19 @@ namespace ControllerTests
         {
             //Arrange
             var fakeMessages = new List<Message>{
-                new Message{SenderId=1}
+                new Message{
+                    SenderId = 1, 
+                    Sender = new AppUser{UserName="Jhon"}}
             };
             
-            var mockUserRepo = new Mock<IUserRepository>();
             var mockMessageRepo = new Mock<IMessageRepository>();
 
-            mockMessageRepo.Setup(repo => repo.GetChatRoomMessages(1))
+            mockMessageRepo.Setup(repo => repo.GetChatRoomMessagesWithUser(1))
                 .ReturnsAsync(fakeMessages);
 
-            mockUserRepo.Setup(repo => repo.GetUserById(1))
-                .ReturnsAsync(new AppUser{UserName="Jhon"});
             
             var controller = 
-                new MessageController(mockMessageRepo.Object, mockUserRepo.Object);
+                new MessageController(mockMessageRepo.Object);
             
             //Act
             var result = await controller.GetChatRoomMessages(1);

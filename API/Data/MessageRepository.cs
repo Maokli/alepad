@@ -29,9 +29,10 @@ namespace API.Data
     _context.Messages.Add(message);
   }
 
-  public async Task<IEnumerable<Message>> GetChatRoomMessages(int chatroomId)
+  public async Task<IEnumerable<Message>> GetChatRoomMessagesWithUser(int chatroomId)
   {
     return await _context.Messages
+      .Include(m => m.Sender)
       .Where(m => m.ChatRoomId == chatroomId)
       .ToListAsync();
   }
