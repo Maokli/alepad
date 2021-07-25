@@ -1,4 +1,5 @@
 using System.Text;
+using System.Threading.Tasks;
 using API.Data;
 using API.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -23,6 +24,24 @@ namespace API.Extensions
                             Encoding.UTF8.GetBytes(config["TokenKey"])),
                         ValidateIssuer = false,
                         ValidateAudience = false
+                    };
+
+                    //SignalR authentication
+                    opt.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context => 
+                        {
+                            var accesToken = context.Request.Query["access_token"];
+                            var path = context.HttpContext.Request.Path;
+
+                            if(!string.IsNullOrEmpty(accesToken) &&
+                                path.StartsWithSegments("/hubs/chat"))
+                            {
+                                context.Token = accesToken;
+                            }
+
+                            return Task.CompletedTask;
+                        }
                     };
                 });
 

@@ -15,10 +15,13 @@ namespace API.Extensions
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IChatRoomRepository, ChatRoomRepository>();
             services.AddScoped<IMessageRepository, MessageRepository>();
+
             services.AddDbContext<DataContext>(opt => {
                 opt.UseSqlite(config
                     .GetConnectionString("DefaultConnection"));
             });
+
+            services.AddSignalR();
 
             return services;
         }

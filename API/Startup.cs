@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using API.Data;
 using API.Extensions;
+using API.Hubs;
 using API.Interfaces;
 using API.Models;
 using API.Services;
@@ -65,6 +66,10 @@ namespace API
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseEndpoints(endpoints => {
+                endpoints.MapHub<ChatHub>("/hubs/chat");
+            });
 
             app.UseEndpoints(endpoints =>
             {
