@@ -1,1 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500&family=Orbitron:wght@700&display=swap');
+
+body{
+  background: linear-gradient(296.69deg, #9F45B0 42.72%, #1A006F 100%);
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card{
+  background: linear-gradient(124.83deg, rgba(255, 228, 242, 0.7) 0%, rgba(255, 228, 242, 0.07) 71.02%);
+  border: 3px solid rgba(255, 228, 242, 0.29);
+  box-shadow: 0px 1px 20px -1px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(20px);
+  border-radius: 10px;
+  height: 90vh;
+  width: 60vw;
+
+  .heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2vw;
+    h1{
+      font-family: Orbitron;
+      font-style: normal;
+      font-weight: bold;
+      color: #00076F;
+      margin: 0;
+      font-size: 7.5vw;
+    }
+    h3{
+      font-family: Chakra Petch;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 3.5vw;
+      line-height: 3vw;
+      color: #FFFFFF;
+      margin: 0;
+    }
+  }
+
+  .buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 14vh;
+    a, button{
+      background: linear-gradient(94.62deg, #FFE4F2 4.06%, rgba(255, 228, 242, 0) 213.48%);
+      box-shadow: -3px 5px 12px -1px rgba(0, 0, 0, 0.25);
+      width: 15vw;
+      height: 4.5vw;
+      margin: .5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-family: Orbitron;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 3vw;
+      line-height: 3vw;
+      text-decoration: none;
+      color: #44008B;
+      outline: none;
+      border: none;
+    }
+
+    button:hover{
+      cursor: pointer;
+    }
+  }
+  
+}

@@ -39,7 +39,8 @@ namespace API.Controllers
 
       return new LoginDto{
           UserName = userAuthDto.UserName,
-          Token = _tokenService.GenerateToken(userAuthDto)
+          Token = _tokenService.GenerateToken(userAuthDto),
+          Id = GetLastId()
       };
     }
 
@@ -58,12 +59,19 @@ namespace API.Controllers
 
         return new LoginDto{
             UserName = user.UserName,
-            Token = _tokenService.GenerateToken(userAuthDto)
+            Token = _tokenService.GenerateToken(userAuthDto),
+            Id = user.Id
         };
     }
     private async Task<bool> UserExists(string userName) {
         return await _userManager.Users
             .AnyAsync(u => u.UserName.ToLower() == userName.ToLower());
     }
+
+    private int GetLastId()
+    {
+      return _userManager.Users.LastAsync().Id;
+    }
   }
+
 }

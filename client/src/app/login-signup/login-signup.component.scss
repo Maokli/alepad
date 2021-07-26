@@ -1,0 +1,49 @@
+.buttons{
+  margin-top: 1vh !important;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10vh;
+  margin-bottom: 0;
+  .form-group{
+    position: relative;
+    input{
+      border: 3px solid #FFFFFF;
+      box-sizing: border-box;
+      border-radius: 10px;
+      background: transparent;
+      margin: 2vh;
+      width: 35vw;
+      height: 4vw;
+      padding: 1vw;
+      font-family: Chakra Petch;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 2vw;
+      line-height: 2.5vw;
+      letter-spacing: 0.05em;
+      outline: none;
+      color: #FFFFFF;
+    }
+    input::placeholder{
+      color: #FFFFFF;
+    }
+
+    .input-icon{
+      background: transparent;
+      border: none;
+      position: absolute;
+      top: 23%;
+      right: 7%;
+      margin: 0;
+      padding: 0;
+    }
+    button{
+      top: 28% !important;
+    }
+  }
+  
+}
