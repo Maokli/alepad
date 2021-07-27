@@ -7,12 +7,14 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ChatroomsComponent } from './chatrooms/chatrooms.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    LoginSignupComponent
+    LoginSignupComponent,
+    ChatroomsComponent
   ],
   imports: [
     BrowserModule,

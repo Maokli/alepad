@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserAuth } from '../models/user-auth.model';
 import { FormBuilder } from '@angular/forms';
 import { AccountService} from '../services/account.service';
@@ -21,7 +21,8 @@ export class LoginSignupComponent {
   constructor(
     private route: ActivatedRoute, 
     private formBuilder: FormBuilder,
-    private accountService: AccountService) {
+    private accountService: AccountService,
+    private router: Router) {
     const path = route.routeConfig.path;
     if(path == 'signup') this.isLogin = false;
    }
@@ -40,10 +41,11 @@ export class LoginSignupComponent {
 
   loginUser(){
     this.accountService.login(this.authForm.value).subscribe(response => 
-      console.log(response));
+      this.router.navigate(['chatrooms']));
   }
 
   signupUser(){
-    console.log(this.authForm.value);
+    this.accountService.signup(this.authForm.value).subscribe(response => 
+      this.router.navigate(['chatrooms']));
   }
 }
