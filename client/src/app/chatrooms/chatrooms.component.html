@@ -7,7 +7,7 @@
   <div class="chatrooms-container" *ngIf="chatRooms">
     <a class="chatroom-card" 
     *ngFor="let chatroom of chatRooms"
-    [routerLink]="'chatrooms/'+ chatroom.name">
+    [routerLink]="chatroom.name + '/' + chatroom.id">
       <h5>{{chatroom.name}}</h5>
       <p>click to join</p>
     </a>

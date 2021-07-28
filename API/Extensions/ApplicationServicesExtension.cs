@@ -20,7 +20,6 @@ namespace API.Extensions
                 opt.UseSqlite(config
                     .GetConnectionString("DefaultConnection"));
             });
-
             services.AddSignalR();
 
             return services;

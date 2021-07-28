@@ -4,6 +4,7 @@ import { ChatroomsComponent } from './chatrooms/chatrooms.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
 import {AuthGuardService as AuthGuard} from './guards/auth-guard.service';
+import { ChatroomComponent } from './chatroom/chatroom.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,11 @@ const routes: Routes = [
   {
     path:'chatrooms',
     component: ChatroomsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:'chatrooms/:name/:id',
+    component: ChatroomComponent,
     canActivate: [AuthGuard]
   }
 ];

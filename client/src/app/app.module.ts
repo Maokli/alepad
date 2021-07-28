@@ -8,13 +8,15 @@ import { LoginSignupComponent } from './login-signup/login-signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ChatroomsComponent } from './chatrooms/chatrooms.component';
+import { ChatroomComponent } from './chatroom/chatroom.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     LoginSignupComponent,
-    ChatroomsComponent
+    ChatroomsComponent,
+    ChatroomComponent
   ],
   imports: [
     BrowserModule,

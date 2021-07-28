@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="header">
+    <h3>alepad</h3>
+    <h1>{{chatroom.name}}</h1>
+    <a [routerLink]="'/chatrooms'">X</a>
+  </div>
+  <div class="separator">
+    <img src="assets/line-pink.svg" alt="">
+  </div>
+  <div class="messages-container">
+    <ng-container 
+    *ngIf="(chatService.messageThread$ | async)?.length >0">
+    <div *ngFor="let message of (chatService.messageThread$ | async)" 
+    class="message sent-by-current" 
+    [ngClass]="{'sent-by-current': message.senderUserName === user.userName}">
+      <h6>{{message.senderUserName}}</h6>
+      <p>{{message.content}}</p>
+    </div>
+  </ng-container>
+  </div>
+  <form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+    <div class="form-group">
+      <input type="text" 
+      placeholder="Aa" 
+      id="Content" formControlName="Content" required>
+      <button type="submit" class="input-icon"><img src="assets/paper-plane.svg" alt=""></button>
+    </div>
+  </form>
+</div>

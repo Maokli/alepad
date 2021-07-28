@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using API.Interfaces;
 using API.Models;
@@ -24,9 +25,15 @@ namespace API.Hubs
 
       await Groups.AddToGroupAsync(Context.ConnectionId, roomId);
 
-      var messages = _messageRepository.GetChatRoomMessagesWithUser(Int16.Parse(roomId));
+      var messages = await _messageRepository.GetChatRoomMessagesWithUser(Int16.Parse(roomId));
 
-      await Clients.Group(roomId).SendAsync("RecievedMessages",messages);
+      var messagesToReturn = messages.Select(m => new MessageToReturnDto{
+            Content = m.Content,
+            DateSent = m.DateSent,
+            SenderUserName = m.Sender.UserName,
+        });
+
+      await Clients.Group(roomId).SendAsync("RecievedMessages",messagesToReturn);
     }
 
     public async Task SendMessage(CreateMessageDto createMessageDto)

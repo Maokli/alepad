@@ -70,7 +70,7 @@ namespace API.Controllers
 
     private int GetLastId()
     {
-      return _userManager.Users.LastAsync().Id;
+      return _userManager.Users.OrderBy(u => u.Id).LastAsync().Id;
     }
   }
 
