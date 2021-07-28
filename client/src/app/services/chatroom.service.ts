@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Observable, ReplaySubject } from 'rxjs';
+import { Observable, of, ReplaySubject } from 'rxjs';
 import { ChatRoom } from '../models/chatroom.model';
 import { AccountService } from './account.service';
 import { map, take } from 'rxjs/operators';
@@ -12,24 +12,28 @@ import { map, take } from 'rxjs/operators';
 export class ChatroomService {
   baseApiUrl = environment.apiUrl;
   token: string;
-  private _chatroomsSource = new ReplaySubject<ChatRoom[]>(1);
-  chatrooms$ = this._chatroomsSource.asObservable();
+  chatroomsCache = new Map();
+  chatrooms: ChatRoom[] = [];
 
   constructor(private http: HttpClient, private accountService: AccountService) {
     this.token = 'Bearer '+this.accountService.getCurrentUser().token;
   }
 
   getAllChatRooms(): Observable<ChatRoom[]>{
-    
-      return this.http.get<ChatRoom[]>(this.baseApiUrl + '/chatroom', {
-        headers: new HttpHeaders()
-          .set('Authorization', this.token)
-          .set('Content-Type', 'application/json')
-      })
+    const chachedResults = this.chatroomsCache.get("chatrooms");
+
+    if(chachedResults) return of(chachedResults);
+
+
+    return this.http.get<ChatRoom[]>(this.baseApiUrl + '/chatroom', {
+      headers: new HttpHeaders()
+        .set('Authorization', this.token)
+        .set('Content-Type', 'application/json')
+    }).pipe(map(response => {
+      this.chatroomsCache.set("chatrooms",response);
+      return response;
+    }))
   }
 
-  setChatrooms(chatrooms: ChatRoom[]){
-    this._chatroomsSource.next(chatrooms);
-  }
   
 }
