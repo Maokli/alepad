@@ -30,7 +30,8 @@ namespace API.Controllers
         return BadRequest("Username is taken");
 
       var user = new AppUser {
-          UserName = userAuthDto.UserName
+          UserName = userAuthDto.UserName,
+          Id = 0
       };
 
       var result = await _userManager.CreateAsync(user, userAuthDto.Password);
