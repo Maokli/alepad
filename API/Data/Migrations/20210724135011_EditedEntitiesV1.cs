@@ -47,7 +47,7 @@ namespace API.Data.Migrations
                     AccessFailedCount = table.Column<int>(type: "INTEGER", nullable: false),
                     ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true),
                     Email = table.Column<string>(type: "TEXT", nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
+                    EmailConfirmed = table.Column<bool>(type: "BOOLEAN", nullable: true),
                     LockoutEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
                     NormalizedEmail = table.Column<string>(type: "TEXT", nullable: true),
