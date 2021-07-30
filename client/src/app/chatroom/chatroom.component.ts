@@ -1,5 +1,5 @@
 import { Message } from '../models/message.model';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
@@ -37,6 +37,8 @@ export class ChatroomComponent implements OnDestroy {
     this.messageForm  = this.formBuilder.group(this.defaultForm);
 
     this.chatService.createHubConnection(this.chatroom.id);
+
+    this.ScrollToBottomOnNewMessage();
    }
 
   ngOnDestroy(): void {
@@ -46,5 +48,21 @@ export class ChatroomComponent implements OnDestroy {
   sendMessage(){
     this.chatService.sendMessage(this.messageForm.value).then(()=>{})
     this.messageForm.reset(this.defaultForm);
+  }
+
+  ScrollToBottomOnNewMessage(){
+    const targetNode = document.body;
+    const config = { childList: true, subtree: true };
+
+    const callback = function(mutationsList, observer) {
+        for(let mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+              const container = document.querySelector(".messages-container");
+              container.scrollTop = container.scrollHeight - container.clientHeight;
+            }
+        }
+    };
+    const observer = new MutationObserver(callback);
+    observer.observe(targetNode, config);
   }
 }

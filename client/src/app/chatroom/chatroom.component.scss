@@ -1,3 +1,8 @@
+body{
+  height: 100vh;
+  overflow: hidden;
+}
+
 .card{
   display: flex;
   flex-direction: column;
@@ -54,6 +59,7 @@
       flex-direction: column;
       justify-content: flex-start;
       max-width: 60%;
+      min-width: 30%;
       padding: 1vw;
       border-radius: 10px;
       background-color: rgba($color: #9F45B0, $alpha: .46);
@@ -116,6 +122,139 @@
       }
       .input-icon:hover{
         cursor: pointer;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .header{
+      display: flex;
+      align-items: center;
+      width: 90%;
+      justify-content: space-between;
+      *{
+        text-align: center;
+      }
+      h3{
+        font-family: Orbitron;
+        font-style: normal;
+        font-weight: bold;
+        color: #00076F;
+        font-size: 4vw;
+      }
+      h1{
+        font-family: Chakra Petch;
+        font-style: normal;
+        font-weight: normal;
+        color: white;
+        font-size: 6vw;
+      }
+      a{
+        text-decoration: none;
+        color: white;
+        font-size: 4vw;
+        font-family: Orbitron;
+        font-style: normal;
+      }
+    }
+    .separator{
+      opacity: .4;
+      align-self: center;
+      img{
+        width: 70vw;
+      }
+    }
+    .messages-container{
+      margin: 2vh 0 0 0;
+      width: 90%;
+      height: 90%;
+      display: flex;
+      overflow-y: scroll;
+      flex-direction: column;
+      *{
+        font-family: Chakra Petch;
+        font-weight: normal;
+        color: white;
+        margin: 0;
+      }
+      .message{
+        margin-left: 2em;
+        margin-bottom: 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        max-width: 60%;
+        padding: 2vw;
+        border-radius: 10px;
+        background-color: rgba($color: #9F45B0, $alpha: .46);
+        float: left;
+        h6{
+          font-size: 3.5vw;
+          margin-bottom: 1.5vh;
+        }
+        p{
+          font-size: 2.5vw;
+          font-weight: lighter;
+        }
+        
+        &.sent-by-current{
+          background-color: rgba(255, 228, 242, 0.3);
+          align-self: flex-end;
+        }
+      }
+    }
+    form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2vh;
+      margin-bottom: 0;
+      width: 100%;
+      .form-group{
+        position: relative;
+        width: 100%;
+        input{
+          border: 3px solid #FFFFFF;
+          box-sizing: border-box;
+          border-radius: 10px;
+          background: transparent;
+          margin: 2vh;
+          width: 94%;
+          height: 8vw;
+          padding: 1vw;
+          font-family: Chakra Petch;
+          font-style: normal;
+          font-weight: 300;
+          font-size: 3.5vw;
+          line-height: 2.5vw;
+          letter-spacing: 0.05em;
+          outline: none;
+          color: #FFFFFF;
+        }
+        input::placeholder{
+          color: #FFFFFF;
+        }
+    
+        .input-icon{
+          background: transparent;
+          border: none;
+          position: absolute;
+          top: 33%;
+          right: 5%;
+          margin: 0;
+          padding: 0;
+          img{
+            width: 5vw;
+          }
+        }
+        .input-icon:hover{
+          cursor: pointer;
+        }
       }
     }
   }

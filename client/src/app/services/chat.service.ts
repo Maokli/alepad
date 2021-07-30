@@ -34,11 +34,12 @@ export class ChatService {
     this.hubConnection.start().catch(error => console.log(error));
 
     this.hubConnection.on("RecievedMessages", messages => {
-      this.messageThreadSource.next(messages);})
+      this.messageThreadSource.next(messages);
+    })
 
     this.hubConnection.on("NewMessage", message => {
       this.messageThread$.pipe(take(1)).subscribe((messages: Message[]) => {
-        this.messageThreadSource.next([...messages, message])
+        this.messageThreadSource.next([...messages, message]);
       })
     });
   }
