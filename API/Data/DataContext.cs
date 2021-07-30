@@ -26,6 +26,13 @@ namespace API.Data
         .HasForeignKey(ur => ur.UserId)
         .IsRequired();
 
+      builder.Entity<AppUser>()
+        .Property(u => u.EmailConfirmed)
+        .HasConversion(
+          v => v ? 1 : 0,
+          v => (v == 1)
+        );
+
       builder.Entity<AppRole>()
         .HasMany(ur => ur.UserRoles)
         .WithOne(u => u.Role)
