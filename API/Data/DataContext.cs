@@ -40,6 +40,20 @@ namespace API.Data
           v => (v == 1)
         );
 
+      builder.Entity<AppUser>()
+        .Property(u => u.PhoneNumberConfirmed)
+        .HasConversion(
+          v => v ? 1 : 0,
+          v => (v == 1)
+        );
+
+      builder.Entity<AppUser>()
+        .Property(u => u.TwoFactorEnabled)
+        .HasConversion(
+          v => v ? 1 : 0,
+          v => (v == 1)
+        );
+
       builder.Entity<AppRole>()
         .HasMany(ur => ur.UserRoles)
         .WithOne(u => u.Role)
