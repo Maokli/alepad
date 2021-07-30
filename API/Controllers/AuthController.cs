@@ -41,7 +41,7 @@ namespace API.Controllers
       return new LoginDto{
           UserName = userAuthDto.UserName,
           Token = _tokenService.GenerateToken(userAuthDto),
-          Id = GetLastId()+1
+          Id = GetLastId()
       };
     }
 
