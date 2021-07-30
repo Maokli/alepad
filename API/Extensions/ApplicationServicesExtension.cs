@@ -62,7 +62,9 @@ namespace API.Extensions
                 // or from the environment variable from Heroku, use it to set up your DbContext.
                 options.UseNpgsql(connStr);
             });
-            services.AddSignalR();
+            services.AddSignalR(opt => {
+                opt.EnableDetailedErrors = true;
+            });
 
             return services;
         }
