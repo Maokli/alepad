@@ -34,6 +34,7 @@ namespace API.Data
     return await _context.Messages
       .Include(m => m.Sender)
       .Where(m => m.ChatRoomId == chatroomId)
+      .OrderBy(m => m.Id)
       .ToListAsync();
   }
 
