@@ -37,11 +37,10 @@ namespace API.Controllers
       var result = await _userManager.CreateAsync(user, userAuthDto.Password);
 
       if(!result.Succeeded) return BadRequest(result.Errors);
-
+      var id = GetLastId();
       return new LoginDto{
           UserName = userAuthDto.UserName,
-          Token = _tokenService.GenerateToken(userAuthDto),
-          Id = GetLastId()
+          Token = _tokenService.GenerateToken(userAuthDto, id),
       };
     }
 
@@ -60,8 +59,7 @@ namespace API.Controllers
 
         return new LoginDto{
             UserName = user.UserName,
-            Token = _tokenService.GenerateToken(userAuthDto),
-            Id = user.Id
+            Token = _tokenService.GenerateToken(userAuthDto, user.Id),
         };
     }
     private async Task<bool> UserExists(string userName) {

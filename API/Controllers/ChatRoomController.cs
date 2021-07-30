@@ -4,6 +4,8 @@ using API.Interfaces;
 using API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using System.Linq;
 
 namespace API.Controllers
 {

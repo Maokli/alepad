@@ -147,3 +147,6 @@ C:\Users\Louay\Documents\MyApps\alepad\ControllerTests\obj\Debug\net5.0\Controll
 C:\Users\Louay\Documents\MyApps\alepad\ControllerTests\obj\Debug\net5.0\ref\ControllerTests.dll
 C:\Users\Louay\Documents\MyApps\alepad\ControllerTests\obj\Debug\net5.0\ControllerTests.pdb
 C:\Users\Louay\Documents\MyApps\alepad\ControllerTests\obj\Debug\net5.0\ControllerTests.genruntimeconfig.cache
+C:\Users\Louay\Documents\MyApps\alepad\ControllerTests\bin\Debug\net5.0\Npgsql.dll
+C:\Users\Louay\Documents\MyApps\alepad\ControllerTests\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\Louay\Documents\MyApps\alepad\ControllerTests\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll

@@ -8,7 +8,7 @@ namespace API.Interfaces
 {
     public interface IMessageRepository
     {
-        void AddMessage(CreateMessageDto createMessageDto);
+        void AddMessage(CreateMessageDto createMessageDto, int userId);
         Task<IEnumerable<Message>> GetChatRoomMessagesWithUser(int chatroomId);
         Task<bool> SaveAllAsync();
     }

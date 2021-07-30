@@ -17,11 +17,11 @@ namespace API.Data
       _context = context;
     }
 
-  public void AddMessage(CreateMessageDto createMessageDto)
+  public void AddMessage(CreateMessageDto createMessageDto, int userId)
   {
     var message = new Message
     {
-      SenderId = createMessageDto.SenderId,
+      SenderId = userId,
       ChatRoomId = createMessageDto.ChatRoomId,
       Content = createMessageDto.Content
     };

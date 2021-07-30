@@ -4,6 +4,6 @@ namespace API.Interfaces
 {
     public interface ITokenService
     {
-        string GenerateToken(UserAuthDto userAuthDto);
+        string GenerateToken(UserAuthDto userAuthDto, int userId);
     }
 }
