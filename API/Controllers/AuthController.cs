@@ -31,7 +31,7 @@ namespace API.Controllers
 
       var user = new AppUser {
           UserName = userAuthDto.UserName,
-          Id = 0
+          Id = 1
       };
 
       var result = await _userManager.CreateAsync(user, userAuthDto.Password);
