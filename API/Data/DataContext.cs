@@ -33,6 +33,13 @@ namespace API.Data
           v => (v == 1)
         );
 
+      builder.Entity<AppUser>()
+        .Property(u => u.LockoutEnabled)
+        .HasConversion(
+          v => v ? 1 : 0,
+          v => (v == 1)
+        );
+
       builder.Entity<AppRole>()
         .HasMany(ur => ur.UserRoles)
         .WithOne(u => u.Role)
