@@ -29,7 +29,6 @@ namespace API.Hubs
 
       var messagesToReturn = messages.Select(m => new MessageToReturnDto{
             Content = m.Content,
-            DateSent = m.DateSent,
             SenderUserName = m.Sender.UserName,
         });
 
@@ -49,7 +48,6 @@ namespace API.Hubs
             var messageToReturn = new MessageToReturnDto{
                 SenderUserName = createMessageDto.SenderUsername,
                 Content = createMessageDto.Content,
-                DateSent = DateTime.Now
             };
 
             await Clients.Group(roomId).SendAsync("NewMessage", messageToReturn);

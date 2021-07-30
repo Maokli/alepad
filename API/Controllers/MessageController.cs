@@ -25,7 +25,6 @@ namespace API.Controllers
 
         var messagesToReturn = messages.Select(m => new MessageToReturnDto{
             Content = m.Content,
-            DateSent = m.DateSent,
             SenderUserName = m.Sender.UserName,
         });
 

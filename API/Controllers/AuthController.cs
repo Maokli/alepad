@@ -29,11 +29,9 @@ namespace API.Controllers
       if(await UserExists(userAuthDto.UserName)) 
         return BadRequest("Username is taken");
 
-      int Id = GetLastId()+1;
 
       var user = new AppUser {
           UserName = userAuthDto.UserName,
-          Id = Id
       };
 
       var result = await _userManager.CreateAsync(user, userAuthDto.Password);
@@ -43,7 +41,7 @@ namespace API.Controllers
       return new LoginDto{
           UserName = userAuthDto.UserName,
           Token = _tokenService.GenerateToken(userAuthDto),
-          Id = Id
+          Id = GetLastId()+1
       };
     }
 
