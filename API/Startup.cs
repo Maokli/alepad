@@ -67,6 +67,9 @@ namespace API
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseEndpoints(endpoints => {
                 endpoints.MapHub<ChatHub>("/hubs/chat");
             });
@@ -74,6 +77,7 @@ namespace API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index", "FallBack");
             });
         }
     }
