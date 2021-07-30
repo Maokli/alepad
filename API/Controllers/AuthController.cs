@@ -29,7 +29,7 @@ namespace API.Controllers
       if(await UserExists(userAuthDto.UserName)) 
         return BadRequest("Username is taken");
 
-      int Id = GetLastId();
+      int Id = GetLastId()+1;
 
       var user = new AppUser {
           UserName = userAuthDto.UserName,
