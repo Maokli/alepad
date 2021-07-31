@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ws1IsfoNZvVRlExdF5YeLiRSS3ui+1HIyM33z55K/70qO04fTBIWJVYreHFhk4FOnQHEJ8UNEKRu1bh7ciCBNA==",
+  "dgSpecHash": "EznFq4pz7sJ9hs/5cnZfjBNRhOgNG3Hb3Ul/GwwMcxb6hniEvpkNkWw73mjnJ2oboBeC6F8yp6ICIXEQaipBmQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Louay\\Documents\\MyApps\\alepad\\ControllerTests\\ControllerTests.csproj",
+  "projectFilePath": "c:\\Users\\Louay\\Documents\\MyApps\\alepad\\ControllerTests\\ControllerTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Louay\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\Louay\\.nuget\\packages\\coverlet.collector\\1.3.0\\coverlet.collector.1.3.0.nupkg.sha512",

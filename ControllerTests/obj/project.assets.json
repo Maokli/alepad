@@ -8346,11 +8346,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Louay\\Documents\\MyApps\\alepad\\ControllerTests\\ControllerTests.csproj",
+      "projectUniqueName": "c:\\Users\\Louay\\Documents\\MyApps\\alepad\\ControllerTests\\ControllerTests.csproj",
       "projectName": "ControllerTests",
-      "projectPath": "C:\\Users\\Louay\\Documents\\MyApps\\alepad\\ControllerTests\\ControllerTests.csproj",
+      "projectPath": "c:\\Users\\Louay\\Documents\\MyApps\\alepad\\ControllerTests\\ControllerTests.csproj",
       "packagesPath": "C:\\Users\\Louay\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Louay\\Documents\\MyApps\\alepad\\ControllerTests\\obj\\",
+      "outputPath": "c:\\Users\\Louay\\Documents\\MyApps\\alepad\\ControllerTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Louay\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -8365,8 +8365,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Louay\\Documents\\MyApps\\alepad\\API\\API.csproj": {
-              "projectPath": "C:\\Users\\Louay\\Documents\\MyApps\\alepad\\API\\API.csproj"
+            "c:\\Users\\Louay\\Documents\\MyApps\\alepad\\API\\API.csproj": {
+              "projectPath": "c:\\Users\\Louay\\Documents\\MyApps\\alepad\\API\\API.csproj"
             }
           }
         }

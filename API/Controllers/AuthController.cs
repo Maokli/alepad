@@ -57,6 +57,8 @@ namespace API.Controllers
         
         if(!result.Succeeded) return Unauthorized("Wrong Password");
 
+        userAuthDto.UserName = user.UserName;
+
         return new LoginDto{
             UserName = user.UserName,
             Token = _tokenService.GenerateToken(userAuthDto, user.Id),
@@ -69,7 +71,8 @@ namespace API.Controllers
 
     private int GetLastId()
     {
-      return _userManager.Users.OrderBy(u => u.Id).LastAsync().Id;
+      var user = _userManager.Users.OrderBy(u => u.Id).LastAsync();
+      return user.Result.Id;
     }
   }
 
