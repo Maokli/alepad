@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { UserLogin } from '../models/user-login.model';
 import {ChatService} from '../services/chat.service';
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-chatroom',
@@ -20,17 +21,15 @@ export class ChatroomComponent implements OnDestroy {
   constructor(
     private formBuilder: FormBuilder, 
     private route: ActivatedRoute,
+    private accountService: AccountService,
     public chatService: ChatService) {
-    const userString = localStorage.getItem("user");
+    this.user = this.accountService.getCurrentUser();
 
     this.route.params.pipe(take(1)).subscribe(p => {
       this.chatroom = {id: p.id, name: p.name}
     })
 
-    this.user = JSON.parse(userString);
     this.defaultForm = {
-      SenderId: this.user.id,
-      SenderUsername: this.user.userName,
       Content: '',
       ChatRoomId: parseInt(this.chatroom.id),
     }

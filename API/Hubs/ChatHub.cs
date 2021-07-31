@@ -6,6 +6,8 @@ using API.Models;
 using API.Models.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
+using System.Security.Claims;
+using API.Extensions;
 
 namespace API.Hubs
 {
@@ -37,8 +39,10 @@ namespace API.Hubs
 
     public async Task SendMessage(CreateMessageDto createMessageDto)
     {
+        int userId = Context.GetHttpContext().User.GetUserId();
+        string userName = Context.GetHttpContext().User.GetUserName();
 
-        _messageRepository.AddMessage(createMessageDto);
+        _messageRepository.AddMessage(createMessageDto, userId);
 
         if(await _messageRepository.SaveAllAsync())
         {
@@ -46,7 +50,7 @@ namespace API.Hubs
             var roomId = httpContext.Request.Query["roomId"].ToString();
 
             var messageToReturn = new MessageToReturnDto{
-                SenderUserName = createMessageDto.SenderUsername,
+                SenderUserName = userName,
                 Content = createMessageDto.Content,
             };
 

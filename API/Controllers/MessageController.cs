@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using API.Extensions;
 using API.Interfaces;
 using API.Models;
 using API.Models.Dtos;
@@ -34,7 +35,8 @@ namespace API.Controllers
     [HttpPost]
     public async Task<ActionResult> AddMessage(CreateMessageDto createMessageDto)
     {
-        _messageRepository.AddMessage(createMessageDto);
+      if(User == null) return Unauthorized();
+        _messageRepository.AddMessage(createMessageDto, User.GetUserId());
 
         var succeeded = await _messageRepository.SaveAllAsync();
 

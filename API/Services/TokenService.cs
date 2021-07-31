@@ -17,14 +17,17 @@ namespace API.Services
       _config = config;
     }
 
-    public string GenerateToken(UserAuthDto userAuthDto)
+    public string GenerateToken(UserAuthDto userAuthDto, int userId)
     {
       var tokenHandler = new JwtSecurityTokenHandler();
       var key = Encoding.ASCII.GetBytes(_config["TokenKey"]);
 
       var tokenDescriptor = new SecurityTokenDescriptor{
           Subject = 
-          new ClaimsIdentity(new[] {new Claim("userName",userAuthDto.UserName)}),
+          new ClaimsIdentity(new[] {
+            new Claim("userName",userAuthDto.UserName),
+            new Claim("userId",userId.ToString()),
+            }),
           Expires = DateTime.UtcNow.AddDays(7),
           SigningCredentials = new SigningCredentials(
               new SymmetricSecurityKey(key),
